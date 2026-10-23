@@ -15,9 +15,9 @@ export const PORTFOLIO_CONFIG = {
     githubUrl: "https://github.com/Nukultalwar",
     linkedinUrl: "https://www.linkedin.com/in/nukul-talwar-84a574211/",
     // Resume file located in /public or external link. Can be updated anytime:
-    resumeUrl: "/Nukul_Talwar_Resume.pdf",
-    // Configurable email display/fallback (without exposing private credentials):
-    contactEmail: "nukultalwar.dev@gmail.com" 
+    resumeUrl: "/1Nukul_Talwar.pdf",
+    // Configurable email display/fallback (editable by user):
+    contactEmail: "nukultalwar@gmail.com" 
   },
   
   about: {
@@ -92,10 +92,10 @@ export const PORTFOLIO_CONFIG = {
       tags: ["React", "JavaScript", "HTML5", "CSS3", "Audio API", "Responsive"],
       category: "Full Stack",
       featured: true,
-      githubUrl: "https://github.com/Nukultalwar/prodcast-website",
+      githubUrl: "https://github.com/Nukultalwar/prodcast-website", // Actual repository URL (configurable)
       liveUrl: undefined, // Configurable when deployed
       isPrivateOrInProgress: false,
-      statusText: "Verified Repository",
+      statusText: "Actual Repository",
       keyFeatures: [
         "Interactive custom audio player with timeline scrubber",
         "Responsive grid layout for podcast cards and episode archives",
@@ -111,22 +111,22 @@ export const PORTFOLIO_CONFIG = {
       title: "Netflix Clone",
       subtitle: "Cinematic Streaming UI & Movie Browse Experience",
       description: "A sleek, dark-themed entertainment streaming interface showcasing hero banners, trending carousels, dynamic movie previews, and responsive layouts.",
-      longDescription: "An immersive recreation of the Netflix browsing experience focusing on high-fidelity UI design, trailer playback integration, dynamic genre carousels, and smooth hover micro-interactions that mirror production streaming services.",
-      tags: ["React", "JavaScript", "REST APIs", "CSS3", "Responsive UI"],
+      longDescription: "Built a responsive Netflix-inspired web interface using HTML, CSS, and JavaScript with dynamic content sliders, trailer preview integration, and smooth hover micro-interactions that mirror production streaming services.",
+      tags: ["JavaScript", "HTML5", "CSS3", "Dynamic Sliders", "Responsive UI"],
       category: "Frontend",
       featured: true,
-      githubUrl: "https://github.com/Nukultalwar", // Primary profile link / configurable
+      githubUrl: "https://github.com/Nukultalwar/Netflix_Clone", // Actual repository URL on GitHub profile
       liveUrl: undefined,
       isPrivateOrInProgress: false,
-      statusText: "Source on GitHub",
+      statusText: "Actual Repository",
       keyFeatures: [
         "Dynamic hero banner with high-resolution backdrop and featured titles",
         "Horizontal scrolling carousels for Trending, Top Rated, and Originals",
         "Interactive modal showing synopsis, release year, and ratings",
         "Tailored responsive layout matching Netflix's signature dark aesthetic"
       ],
-      techStack: ["React.js", "JavaScript", "Movie Database API", "CSS Grid & Flexbox"],
-      architectureNotes: "Built with reusable row and card components, asynchronous image lazy-loading, and error-tolerant API queries.",
+      techStack: ["JavaScript", "HTML5", "CSS3", "CSS Grid & Flexbox", "Git"],
+      architectureNotes: "Dynamic content slider logic and responsive layout handling for multi-device streaming viewing.",
       accentColor: "#ef4444"
     },
     {
@@ -135,21 +135,21 @@ export const PORTFOLIO_CONFIG = {
       subtitle: "Content-Driven Recommendation & Filter Engine",
       description: "An intelligent movie discovery and recommendation platform allowing users to find cinema based on genres, keywords, user ratings, and preferences.",
       longDescription: "Engineered to simplify movie selection, this application integrates movie datasets, search filters, and similarity suggestions. Users can explore trending titles, read summaries, and view personalized recommendations based on chosen criteria.",
-      tags: ["React", "JavaScript", "APIs", "Data Filtering", "UI/UX"],
-      category: "Frontend",
+      tags: ["Python", "Data Processing", "Recommendation Engine", "Algorithms"],
+      category: "Full Stack",
       featured: true,
-      githubUrl: "https://github.com/Nukultalwar",
+      githubUrl: "https://github.com/Nukultalwar/Movie-Recommender-System", // Actual repository URL on GitHub profile
       liveUrl: undefined,
       isPrivateOrInProgress: false,
-      statusText: "Source on GitHub",
+      statusText: "Actual Repository",
       keyFeatures: [
         "Instant title search with debounced input query handling",
         "Multi-criteria filtering: genre, release date, and rating thresholds",
         "Recommendation cards suggesting similar cinematic experiences",
         "Rich detail modal with cast highlights and production details"
       ],
-      techStack: ["React.js", "REST APIs", "Modern JavaScript", "Tailwind/CSS"],
-      architectureNotes: "Optimized client-side filtering algorithms to ensure instant results without unnecessary API re-fetches.",
+      techStack: ["Python", "Recommendation Algorithms", "Data Science", "Git"],
+      architectureNotes: "Similarity scoring algorithms matching user preferences against movie feature matrices.",
       accentColor: "#818cf8"
     },
     {
@@ -158,13 +158,13 @@ export const PORTFOLIO_CONFIG = {
       subtitle: "Real-Time Meteorological Dashboard",
       description: "A clean, live weather dashboard providing real-time forecasts, temperature metrics, humidity, wind velocity, and location-based weather condition cards.",
       longDescription: "A focused, responsive weather utility designed with clear data visualization. It connects to live meteorological APIs to provide real-time condition reporting, dynamic weather icons (sun, rain, snow, clouds), and 5-day predictive forecasts.",
-      tags: ["JavaScript", "React", "REST API", "Geolocation", "CSS3"],
+      tags: ["JavaScript", "REST API", "Geolocation", "HTML5", "CSS3"],
       category: "Utility",
       featured: false,
-      githubUrl: "https://github.com/Nukultalwar",
+      githubUrl: "https://github.com/Nukultalwar/weather_app", // Actual repository URL on GitHub profile
       liveUrl: undefined,
       isPrivateOrInProgress: false,
-      statusText: "Source on GitHub",
+      statusText: "Actual Repository",
       keyFeatures: [
         "Real-time weather data lookup for global cities",
         "Dynamic background changes responding to current weather states",
@@ -176,50 +176,73 @@ export const PORTFOLIO_CONFIG = {
       accentColor: "#06b6d4"
     },
     {
-      id: "quick-quiz",
-      title: "Quick Quiz",
-      subtitle: "Interactive Knowledge Testing & Gamified Quiz UI",
-      description: "A fast-paced interactive quiz application featuring dynamic scoring, countdown timers, randomized questions, and instant visual feedback.",
-      longDescription: "Created to make learning engaging and interactive. Users progress through multiple-choice questions with real-time score calculation, immediate answer explanations, progress indicators, and an end-of-round performance summary card.",
-      tags: ["JavaScript", "React", "State Management", "Gamification", "CSS"],
-      category: "Interactive",
-      featured: false,
-      githubUrl: "https://github.com/Nukultalwar",
-      liveUrl: undefined,
-      isPrivateOrInProgress: false,
-      statusText: "Source on GitHub",
-      keyFeatures: [
-        "Interactive question progression with dynamic feedback animations",
-        "Integrated timer countdown challenging user response time",
-        "Detailed scorecard at completion displaying accuracy and summary",
-        "Clean, distraction-free glassmorphic user interface"
-      ],
-      techStack: ["React.js", "JavaScript ES6+", "CSS3 Animations", "HTML5"],
-      architectureNotes: "State machine architecture managing quiz progression (Intro → Question Flow → Review → Results).",
-      accentColor: "#a855f7"
-    },
-    {
       id: "todo-app",
       title: "Todo App",
       subtitle: "Productivity Task Manager with Persistent State",
       description: "A feature-complete task management application with priority filters, completion toggles, categorization, and local storage data persistence.",
       longDescription: "A reliable productivity tool emphasizing simplicity and responsive interaction. Users can organize daily goals, filter by active or completed tasks, clear finished items, and enjoy seamless data persistence across browser sessions.",
-      tags: ["JavaScript", "React", "LocalStorage", "CRUD Operations", "CSS3"],
+      tags: ["HTML5", "CSS3", "JavaScript", "LocalStorage", "CRUD Operations"],
       category: "Utility",
       featured: false,
-      githubUrl: "https://github.com/Nukultalwar",
+      githubUrl: "https://github.com/Nukultalwar/todo-app", // Actual repository URL on GitHub profile
       liveUrl: undefined,
       isPrivateOrInProgress: false,
-      statusText: "Source on GitHub",
+      statusText: "Actual Repository",
       keyFeatures: [
         "Full CRUD functionality: Add, Edit, Complete, and Delete tasks",
         "Filter tasks by All, Active, and Completed statuses",
         "Browser LocalStorage persistence ensuring data is never lost",
         "Accessible keyboard navigation with keyboard shortcuts"
       ],
-      techStack: ["React.js", "JavaScript", "HTML5 LocalStorage", "CSS3"],
+      techStack: ["HTML5", "CSS3", "JavaScript", "LocalStorage API"],
       architectureNotes: "Optimistic UI updates paired with persistent storage hooks for frictionless task editing.",
       accentColor: "#10b981"
+    },
+    {
+      id: "hotel-website",
+      title: "Hotel Booking Website",
+      subtitle: "Full-Featured Hospitality & Reservation UI",
+      description: "A responsive, modern hospitality website engineered in TypeScript with room discovery, amenity showcases, and booking reservation flows.",
+      longDescription: "A comprehensive hotel and booking management web application featuring interactive room showcases, amenity filtering, reservation request forms, and mobile-optimized layouts.",
+      tags: ["TypeScript", "Frontend UI", "Responsive Design", "CSS3", "HTML5"],
+      category: "Frontend",
+      featured: false,
+      githubUrl: "https://github.com/Nukultalwar/hotel-website", // Actual repository URL on GitHub profile
+      liveUrl: undefined,
+      isPrivateOrInProgress: false,
+      statusText: "Actual Repository",
+      keyFeatures: [
+        "High-fidelity room suites presentation with photo galleries",
+        "Interactive amenity filtering and rate comparison",
+        "Booking reservation request form with validation",
+        "Fully responsive layout crafted for mobile guests"
+      ],
+      techStack: ["TypeScript", "HTML5", "CSS3", "Git"],
+      architectureNotes: "Typed component structures ensuring type-safe room state and reservation workflows.",
+      accentColor: "#eab308"
+    },
+    {
+      id: "quick-quiz",
+      title: "Quick Quiz",
+      subtitle: "Interactive Knowledge Testing & Gamified Quiz UI",
+      description: "A fast-paced interactive quiz application featuring dynamic scoring, countdown timers, randomized questions, and instant visual feedback.",
+      longDescription: "Created to make learning engaging and interactive. Users progress through multiple-choice questions with real-time score calculation, immediate answer explanations, progress indicators, and an end-of-round performance summary card.",
+      tags: ["JavaScript", "State Management", "Gamification", "CSS3 Animations"],
+      category: "Interactive",
+      featured: false,
+      githubUrl: "https://github.com/Nukultalwar/quick-quiz", // Editable repository URL: configurable
+      liveUrl: undefined,
+      isPrivateOrInProgress: false,
+      statusText: "Configurable Repository",
+      keyFeatures: [
+        "Interactive question progression with dynamic feedback animations",
+        "Integrated timer countdown challenging user response time",
+        "Detailed scorecard at completion displaying accuracy and summary",
+        "Clean, distraction-free glassmorphic user interface"
+      ],
+      techStack: ["JavaScript ES6+", "CSS3 Animations", "HTML5"],
+      architectureNotes: "State machine architecture managing quiz progression (Intro → Question Flow → Review → Results).",
+      accentColor: "#a855f7"
     }
   ] as Project[],
 

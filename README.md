@@ -45,7 +45,8 @@ A premium, modern, futuristic **3D developer portfolio** crafted for **Nukul Tal
 - **Validated Contact Section**:
   - Name, Email, Subject, and Message fields with client-side validation.
   - States: idle, loading, success (with confetti), error.
-  - Secure integration via `VITE_FORMSPREE_ENDPOINT` environment variable (never exposes private API keys) + instant mail client (`mailto:`) fallback.
+  - Formspree integration via its public `VITE_FORMSPREE_ENDPOINT` identifier; the sender email is included as the reply-to address.
+  - Form submissions are not reported as successful until Formspree accepts them. Configure the notification recipient in Formspree; no private service credentials are exposed in frontend code.
 - **SEO & Accessibility**:
   - Full Open Graph, Twitter cards, meta description, and JSON-LD Person schema in `index.html`.
   - Accessible semantic markup, keyboard navigable links, ARIA labels, and `prefers-reduced-motion` compliance.
@@ -154,13 +155,16 @@ Open [`src/data/portfolioData.ts`](file:///Users/nukultalwargmail.com/Documents/
 ### 2. Replace the Resume PDF
 Drop your updated resume PDF at [`public/Nukul_Talwar_Resume.pdf`](file:///Users/nukultalwargmail.com/Documents/Portfolio/public/Nukul_Talwar_Resume.pdf). The "Download Resume" button will automatically deliver this file.
 
-### 3. Connect Contact Form to Formspree (Optional)
+### 3. Connect Contact Form to Formspree
 1. Sign up for a free endpoint at [formspree.io](https://formspree.io).
-2. Create a `.env` file in the root directory:
+2. Configure the endpoint's email notifications to deliver to `nukultalwar@gmail.com`.
+3. Create a `.env` file in the root directory:
    ```env
    VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
    ```
-3. Restart your dev server. Messages submitted through the form will now be sent directly to your email inbox!
+4. Restart your dev server. Formspree sends the submitted name, sender email, subject, and message to the configured notification address. The sender email is included as the reply-to address so you can respond directly.
+
+The Formspree endpoint identifier is public and is safe to use in the frontend. Do not place private API keys or secrets in `VITE_` variables. Until the endpoint is configured, the form displays an error rather than claiming a message was delivered; the separate Mail Client action remains available.
 
 ---
 

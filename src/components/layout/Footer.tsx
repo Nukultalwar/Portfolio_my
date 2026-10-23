@@ -63,6 +63,16 @@ export const Footer: React.FC = () => {
                 <Mail className="w-4 h-4" />
               </a>
             </div>
+
+            <div className="mt-2">
+              <a
+                href={`mailto:${PORTFOLIO_CONFIG.personal.contactEmail}`}
+                className="text-xs font-mono text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5"
+                title="Send email to Nukul Talwar"
+              >
+                <span>{PORTFOLIO_CONFIG.personal.contactEmail}</span>
+              </a>
+            </div>
           </div>
 
           {/* Col 2: Navigation Links */}

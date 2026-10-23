@@ -89,26 +89,37 @@ export const ContactSection: React.FC = () => {
     setStatus('loading');
     setErrorMessage('');
 
-    // Check for optional environment variables (Formspree or EmailJS endpoint)
+    // Formspree's endpoint ID is public; delivery recipients are configured in Formspree.
     const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+    if (!formspreeEndpoint) {
+      setStatus('error');
+      setErrorMessage(
+        'The contact form is not configured yet. Please use the mail client option or try again later.'
+      );
+      return;
+    }
 
     try {
-      if (formspreeEndpoint) {
-        const response = await fetch(formspreeEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+          _subject: formData.subject.trim(),
+          _replyto: formData.email.trim(),
+        }),
+      });
 
-        if (!response.ok) {
-          throw new Error('Failed to send message via form endpoint.');
-        }
-      } else {
-        // Safe simulation fallback when no external service key is configured in .env
-        await new Promise((resolve) => setTimeout(resolve, 1200));
+      if (!response.ok) {
+        throw new Error(
+          `The email service returned an error (${response.status}). Please try again or use the mail client option.`
+        );
       }
 
       setStatus('success');
@@ -124,10 +135,12 @@ export const ContactSection: React.FC = () => {
       }
       setFormData({ name: '', email: '', subject: '', message: '' });
       setErrors({});
-    } catch (err: any) {
+    } catch (err) {
       setStatus('error');
       setErrorMessage(
-        err.message || 'Something went wrong while sending. Please try the mailto link below.'
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong while sending. Please try again or use the mail client option.'
       );
     }
   };
@@ -175,16 +188,24 @@ export const ContactSection: React.FC = () => {
               {/* Email Copy Card */}
               <div className="p-4 rounded-xl bg-slate-950/50 border border-white/5 flex items-center justify-between gap-3 mb-6">
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="p-2 rounded-lg bg-cyan-500/15 text-cyan-400 shrink-0">
+                  <a
+                    href={`mailto:${PORTFOLIO_CONFIG.personal.contactEmail}`}
+                    aria-label={`Send email to ${PORTFOLIO_CONFIG.personal.contactEmail}`}
+                    className="p-2 rounded-lg bg-cyan-500/15 text-cyan-400 hover:bg-cyan-500/25 transition-colors shrink-0"
+                  >
                     <Mail className="w-4 h-4" />
-                  </div>
+                  </a>
                   <div className="overflow-hidden">
                     <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
                       Contact Email
                     </div>
-                    <div className="text-xs sm:text-sm font-mono text-white truncate">
+                    <a
+                      href={`mailto:${PORTFOLIO_CONFIG.personal.contactEmail}`}
+                      className="text-xs sm:text-sm font-mono text-white hover:text-cyan-300 transition-colors truncate block underline-offset-2 hover:underline"
+                      title="Click to open email client"
+                    >
                       {PORTFOLIO_CONFIG.personal.contactEmail}
-                    </div>
+                    </a>
                   </div>
                 </div>
 
@@ -236,7 +257,7 @@ export const ContactSection: React.FC = () => {
                 <span className="text-cyan-300 font-semibold block mb-1">
                   💡 Production Security Note:
                 </span>
-                Form supports environment-based integration (<code className="text-slate-200">VITE_FORMSPREE_ENDPOINT</code>). API credentials are never exposed in client code.
+                Configure <code className="text-slate-200">VITE_FORMSPREE_ENDPOINT</code> and set Formspree notifications to <code className="text-slate-200">nukultalwar@gmail.com</code>. No private API credentials are exposed in client code.
               </div>
             </GlassCard>
           </div>
@@ -254,9 +275,9 @@ export const ContactSection: React.FC = () => {
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-4 shadow-lg">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
+                  <h4 className="text-2xl font-bold text-white mb-2">Thanks! Your message has been sent successfully.</h4>
                   <p className="text-slate-300 text-sm max-w-md leading-relaxed mb-6">
-                    Thank you for reaching out. I have received your message details and will get back to you promptly.
+                    I have received your message details and will get back to you promptly.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
@@ -282,6 +303,11 @@ export const ContactSection: React.FC = () => {
                       <input
                         id="contact-name"
                         type="text"
+                        autoComplete="name"
+                        required
+                        minLength={2}
+                        maxLength={120}
+                        aria-invalid={Boolean(errors.name)}
                         value={formData.name}
                         onChange={(e) => {
                           setFormData({ ...formData, name: e.target.value });
@@ -313,6 +339,10 @@ export const ContactSection: React.FC = () => {
                       <input
                         id="contact-email"
                         type="email"
+                        autoComplete="email"
+                        required
+                        maxLength={254}
+                        aria-invalid={Boolean(errors.email)}
                         value={formData.email}
                         onChange={(e) => {
                           setFormData({ ...formData, email: e.target.value });
@@ -344,6 +374,9 @@ export const ContactSection: React.FC = () => {
                       <input
                         id="contact-subject"
                         type="text"
+                        required
+                        maxLength={160}
+                        aria-invalid={Boolean(errors.subject)}
                         value={formData.subject}
                         onChange={(e) => {
                           setFormData({ ...formData, subject: e.target.value });
@@ -371,6 +404,10 @@ export const ContactSection: React.FC = () => {
                     <textarea
                       id="contact-message"
                       rows={4}
+                      required
+                      minLength={10}
+                      maxLength={5000}
+                      aria-invalid={Boolean(errors.message)}
                       value={formData.message}
                       onChange={(e) => {
                         setFormData({ ...formData, message: e.target.value });

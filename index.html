@@ -62,5 +62,39 @@
   <body class="bg-[#07090e] text-slate-100 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300 overflow-x-hidden min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Static Server Helper (e.g., if opened via VS Code Live Server on port 5500 instead of Vite) -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const root = document.getElementById('root');
+          if (root && (!root.children || root.children.length === 0)) {
+            const isLiveServer = window.location.port === '5500';
+            const banner = document.createElement('div');
+            banner.style.cssText = 'position:fixed;inset:0;background:#07090e;color:#f1f5f9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:system-ui,-apple-system,sans-serif;z-index:99999;';
+            banner.innerHTML = `
+              <div style="max-width:540px;padding:32px;border:1px solid rgba(56,189,248,0.3);border-radius:24px;background:rgba(15,23,42,0.85);backdrop-filter:blur(16px);box-shadow:0 0 40px rgba(56,189,248,0.15);">
+                <div style="width:48px;height:48px;border-radius:14px;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                  <span style="font-size:24px;">⚡</span>
+                </div>
+                <h2 style="font-size:22px;font-weight:700;margin:0 0 10px;color:#fff;">Start Vite Development Server</h2>
+                <p style="font-size:14px;line-height:1.6;color:#94a3b8;margin:0 0 20px;">
+                  This is a modern React + TypeScript + Three.js application. ${isLiveServer ? 'VS Code Live Server (port 5500) serves raw uncompiled files' : 'It requires the Vite bundler to compile TypeScript and JSX modules'}.
+                </p>
+                <div style="background:#020617;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 16px;text-align:left;font-family:monospace;font-size:13px;color:#38bdf8;margin-bottom:20px;">
+                  <span style="color:#64748b;">$</span> npm run dev
+                </div>
+                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                  <a href="http://localhost:3000" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#38bdf8,#6366f1);color:#fff;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:600;text-decoration:none;box-shadow:0 0 20px rgba(56,189,248,0.35);">
+                    Open http://localhost:3000 →
+                  </a>
+                </div>
+              </div>
+            `;
+            root.appendChild(banner);
+          }
+        }, 800);
+      });
+    </script>
   </body>
 </html>

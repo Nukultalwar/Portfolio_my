@@ -122,7 +122,7 @@ export const GitHubSection: React.FC = () => {
             <div className="flex items-center justify-between px-1">
               <h4 className="text-base font-bold text-white flex items-center gap-2">
                 <FolderGit2 className="w-4 h-4 text-cyan-400" />
-                <span>Public Repositories &amp; Projects</span>
+                <span>GitHub Repositories &amp; Projects</span>
               </h4>
               <span className="text-xs font-mono text-slate-400">
                 Sorted by recent activity
@@ -141,7 +141,7 @@ export const GitHubSection: React.FC = () => {
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-1.5 text-cyan-300 font-mono text-xs">
                         <CheckCircle className="w-3.5 h-3.5" />
-                        <span>Verified Project Repo</span>
+                        <span>Private GitHub repository</span>
                       </div>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300">
                         JavaScript
@@ -168,7 +168,7 @@ export const GitHubSection: React.FC = () => {
                   <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
                     <span className="flex items-center gap-1">
                       <Star className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Public</span>
+                      <span>Private</span>
                     </span>
                     <a
                       href="https://github.com/Nukultalwar/prodcast-website"
