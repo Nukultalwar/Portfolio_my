@@ -15,7 +15,7 @@ export const PORTFOLIO_CONFIG = {
     githubUrl: "https://github.com/Nukultalwar",
     linkedinUrl: "https://www.linkedin.com/in/nukul-talwar-84a574211/",
     // Resume file located in /public or external link. Can be updated anytime:
-    resumeUrl: "/1Nukul_Talwar.pdf",
+    resumeUrl: "https://drive.google.com/file/d/1UWqxBLmYDsuGKe44c3BRZfShKo1XzgLy/view?usp=sharing",
     // Configurable email display/fallback (editable by user):
     contactEmail: "nukultalwar@gmail.com" 
   },

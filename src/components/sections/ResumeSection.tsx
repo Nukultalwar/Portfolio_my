@@ -17,7 +17,7 @@ export const ResumeSection: React.FC = () => {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const handleDownload = () => {
-    // Fire celebratory confetti for recruiters downloading resume
+    // Fire celebratory confetti for recruiters opening resume
     try {
       confetti({
         particleCount: 50,
@@ -31,14 +31,6 @@ export const ResumeSection: React.FC = () => {
 
     setDownloadSuccess(true);
     setTimeout(() => setDownloadSuccess(false), 4000);
-
-    // Trigger download
-    const link = document.createElement('a');
-    link.href = PORTFOLIO_CONFIG.personal.resumeUrl;
-    link.download = 'Nukul_Talwar_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
@@ -108,13 +100,16 @@ export const ResumeSection: React.FC = () => {
             {/* Action Buttons: Download Resume & LinkedIn */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               {/* Download Resume Button */}
-              <button
+              <a
+                href={PORTFOLIO_CONFIG.personal.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={handleDownload}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-glow-cyan hover:shadow-cyan-500/50 transition-all transform hover:-translate-y-0.5 active:scale-95 group"
               >
                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                 <span>Download Resume (PDF)</span>
-              </button>
+              </a>
 
               {/* LinkedIn Button */}
               <a
@@ -129,10 +124,10 @@ export const ResumeSection: React.FC = () => {
               </a>
             </div>
 
-            {/* Notification alert after clicking download */}
+            {/* Notification alert after clicking resume */}
             {downloadSuccess && (
               <div className="mt-5 p-3 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-center text-xs font-mono text-cyan-300 animate-in fade-in">
-                ✓ Resume download initiated! To replace with your custom PDF, drop your file at <code className="text-white">/public/Nukul_Talwar_Resume.pdf</code>.
+                ✓ Opening resume in a new tab!
               </div>
             )}
 
